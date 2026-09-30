@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 import { FaRegFile } from 'react-icons/fa';
 import { SiCplusplus, SiC, SiPython, SiRust, SiFedora, SiJavascript } from 'react-icons/si';
