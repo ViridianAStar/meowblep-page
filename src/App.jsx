@@ -14,7 +14,7 @@ function App() {
       <section id="top"> 
         <div className="flex">
           {/* <img src={heroImg} className="base" width="170" height="179" alt="" /> */}
-          <img src={"../public/flaminglaptop.jpg"} className="base" alt="a laptop on fire" style={{ paddingTop: "20px" }} />
+          <img src={"/flaminglaptop.jpg"} className="base" alt="a laptop on fire" style={{ paddingTop: "20px" }} />
         </div>
         <div>
           <h1>Welcome to the meowblep.com home page</h1>
