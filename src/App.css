@@ -1,0 +1,339 @@
+/* Prevent padding and borders from unexpectedly increasing element sizes */
+* {
+  box-sizing: border-box;
+}
+
+/* Make the page fit the browser viewport */
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* Prevent horizontal scrolling on mobile */
+body {
+  overflow-x: hidden;
+}
+
+/* =========================
+   Counter
+   ========================= */
+
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+
+/* =========================
+   Hero
+   ========================= */
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+
+    /* Allow the image to shrink on small screens */
+    max-width: 100%;
+    height: auto;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg)
+      rotateY(39deg) scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg)
+      rotateY(39deg) scale(0.8);
+  }
+
+  /* Make the hero image scale down on small screens */
+  @media (max-width: 500px) {
+    .base {
+      width: min(170px, 80vw);
+    }
+  }
+}
+
+
+/* =========================
+   Center / Hero Content
+   ========================= */
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  /* Keep content from touching the edges */
+  width: 100%;
+  max-width: 100%;
+  padding-inline: 20px;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+
+  @media (max-width: 500px) {
+    padding: 24px 16px 20px;
+    gap: 14px;
+  }
+}
+
+
+/* =========================
+   Responsive Headings
+   ========================= */
+
+h1 {
+  /* Scales between 2rem and 4rem depending on viewport */
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+  max-width: 100%;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.2;
+}
+
+
+/* =========================
+   Tech Stack / GitHub
+   ========================= */
+
+#tech-stack {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  /*
+   * Make sure the section never becomes wider than
+   * the browser viewport.
+   */
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  & > div {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 32px;
+
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+
+    @media (max-width: 500px) {
+      padding: 24px 16px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+/* =========================
+   Tech Stack
+   ========================= */
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+
+/* =========================
+   GitHub
+   ========================= */
+
+#githubs {
+  min-width: 0;
+
+  /*
+   * Allows long GitHub names to wrap instead of
+   * forcing the entire page wider.
+   */
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================
+   Tech Stack / GitHub Lists
+   ========================= */
+
+#tech-stack ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  /* Allow icons/buttons to wrap */
+  flex-wrap: wrap;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+
+    .button-icon {
+      height: 18px;
+      width: 18px;
+      flex-shrink: 0;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+      min-width: 0;
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+
+      /* Prevent long text from overflowing */
+      overflow-wrap: anywhere;
+    }
+  }
+
+  @media (max-width: 500px) {
+    li {
+      /*
+       * On very small phones, let each link take
+       * the full available width.
+       */
+      flex: 1 1 100%;
+    }
+
+    a {
+      width: 100%;
+    }
+  }
+}
+
+
+/* =========================
+   Spacer
+   ========================= */
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+
+  @media (max-width: 500px) {
+    height: 32px;
+  }
+}
+
+
+/* =========================
+   Decorative Tick Marks
+   ========================= */
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
